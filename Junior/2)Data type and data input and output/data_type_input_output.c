@@ -76,5 +76,6 @@ int main() {
     char gender = 'F';
     printf("%s's age is %d, weight is %5.2f, gender is %c\n", name, age, weight, gender);
     printf("**************************\n");
+
     return 0;
 }
