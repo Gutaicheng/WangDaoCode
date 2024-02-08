@@ -1,6 +1,6 @@
 //
 // Created by GuTaicheng on 2024/2/8.
-//Selection and looping
+//
 #include <stdio.h>
 #include <string.h>
 
