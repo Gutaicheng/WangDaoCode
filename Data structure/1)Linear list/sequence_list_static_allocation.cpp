@@ -19,6 +19,7 @@ bool ListDelete_LocateElem(SQList &L, int e);
 void PrintList(SQList L);
 int GetElem(SQList L, int i);
 int LocateElem(SQList L, int e);
+void StartTest(SQList &L);
 
 void InitList(SQList &L) {
     L.length = 0;
@@ -59,7 +60,7 @@ bool ListDelete_LocateElem(SQList &L, int e) {
 
 void PrintList(SQList L) {
     for (int i = 0; i < L.length; i++) {
-        printf("%d ", L.data[i]);
+        printf("%4d ", L.data[i]);
     }
     printf("\n");
 }
@@ -82,9 +83,7 @@ void DestroyList(SQList &L) {
     L.length = 0;
 }
 
-int main() {
-    SQList L;
-    InitList(L);
+void StartTest(SQList &L) {
     int flag = 1, a, i, e;
     while (flag == 1) {
         printf("1.获取表长\n");
@@ -141,5 +140,11 @@ int main() {
                 break;
         }
     }
+}
+
+int main() {
+    SQList L;
+    InitList(L);
+    StartTest(L);
     return 0;
 }
