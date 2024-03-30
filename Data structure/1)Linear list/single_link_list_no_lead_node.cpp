@@ -28,7 +28,6 @@ void Test();
 bool InitLinkList(LinkList &L) {
     L = NULL;
     return true;
-
 }
 
 int Length(LinkList L) {
@@ -69,6 +68,7 @@ bool InsertNextLNode(LNode *p, int e) {
 }
 
 bool ListInsert_NodeNext(LinkList &L, int i, int e) {
+    //如果是无头节点的单链表，i = 1 时要额外判断
     if (i == 1) {
         LNode *s = (LNode *) malloc(sizeof (LNode));
         s->data = e;
@@ -91,6 +91,7 @@ bool InsertBeforeLNode(LNode *p, int e) {
 }
 
 bool ListInsert_NodeBefore(LinkList &L, int i, int e) {
+    //如果是无头节点的单链表，i = 1 时要额外判断
     if (i == 1) {
         LNode *s = (LNode *) malloc(sizeof (LNode));
         s->data = e;
@@ -123,6 +124,14 @@ bool DeleteLNode_2(LNode *p, int &e) {
 }
 
 bool ListDelete(LinkList &L, int i, int &e) {
+    //如果是无头节点的单链表，i = 1 时要额外判断
+    if (i == 1 && L != NULL) {
+        LNode *s = L;
+        L = s->next;
+        e = s->data;
+        free(s);
+        return true;
+    }
     LNode *p = GetElem(L, i - 1);
     return DeleteLNode_1(p, e);
 //    LNode *p = GetElem(L, i);
@@ -178,6 +187,11 @@ int main () {
     LinkList L;
     InitLinkList(L);
     List_HeadInsert(L);
+    ListPrint(L);
+    printf("\n");
+    int e;
+    ListDelete(L, 1, e);
+    printf("e=%d\n", e);
     ListPrint(L);
     printf("\n");
     List_TailInsert(L);
