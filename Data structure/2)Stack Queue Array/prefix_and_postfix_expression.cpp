@@ -5,7 +5,7 @@
  * 注意
  * 1. 本代码因为需要计算，所以只能处理带具体数值的表达式
  * 如：1+2，（A+B）则不行
- * 2. 本代码只能处理数值为0~9直接的数字，多位数也能做，但是不适合学习使用
+ * 2. 本代码只能处理数值为0~9之间的数字，多位数也能做，但是不适合学习使用
  * 3. 如果需要修改表达式长度，请调整MaxSize
  * 4. 为方便阅读，没有加函数声明，请勿模仿
  */
@@ -161,6 +161,7 @@ float evaluate_postfix(postfixStack &postfix) {
 
 int main() {
     char prefix[30];
+    // 输入参考 ((9/(7-(1+3)))*3)-(2+(1+1))
     gets(prefix);
 
     // 后缀表达式栈
@@ -173,11 +174,11 @@ int main() {
     // 判断表达式是否合法
     if (isValidExpression(prefix)) {
         prefix_to_postfix(prefix, postfix, operandStack);
+        printf("后缀表达式：");
+        puts(postfix.data);
+        float r = evaluate_postfix(postfix);
+        printf("计算结果%.2f\n", r);
     } else printf("表达式不合法\n");
 
-    printf("后缀表达式：");
-    puts(postfix.data);
-    float r = evaluate_postfix(postfix);
-    printf("计算结果%.2f\n", r);
     return 0;
 }
