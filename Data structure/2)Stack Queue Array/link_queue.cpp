@@ -20,6 +20,7 @@ bool InitLinkQueue(LinkQueue &Q) {
     return true;
 }
 
+//TODO 注意判空条件
 bool isEmpty(LinkQueue Q) {
     if (Q.front == Q.rear) return true;
     return false;
@@ -42,6 +43,7 @@ bool DeQueue(LinkQueue &Q, int &e) {
     ///注意若是删除最后一个元素即队尾，要将Q.rear == Q.front
     ///由于此时Q.front->next == NULL, 所以判断条件有很多
     ///但是以下这个最为直观
+    // TODO 注意处理最后一个节点
     if (Q.rear == p) Q.rear = Q.front;
     free(p);
     return true;
